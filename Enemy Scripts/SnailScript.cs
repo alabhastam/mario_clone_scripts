@@ -104,6 +104,7 @@ public class SnailScript : MonoBehaviour {
 		if (!Physics2D.Raycast (down_Collision.position, Vector2.down, 0.1f)) {
 
 			ChangeDirection ();
+			Debug.Log("chanfed");
 		}
 
 	}
