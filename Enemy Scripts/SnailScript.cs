@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SnailScript : MonoBehaviour {
 
+	private Coroutine changeDirectionCoroutine;
 	public float moveSpeed = 1f;
 	private Rigidbody2D myBody;
 	private Animator anim;
@@ -29,7 +30,26 @@ public class SnailScript : MonoBehaviour {
 	void Start () {
 		moveLeft = true;
 		canMove = true;
+		changeDirectionCoroutine = StartCoroutine(ChangeDirectionRoutine());
 	}
+
+	//change enemy direction with random time
+	private IEnumerator ChangeDirectionRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            ChangeDirection();
+        }
+    }
+	// Stop the coroutine if the object is destroyed or no longer needed
+    void OnDestroy()
+    {
+        if (changeDirectionCoroutine != null)
+        {
+            StopCoroutine(changeDirectionCoroutine);
+        }
+    }
 
 	void Update () {
 		if (canMove) {
@@ -103,11 +123,12 @@ public class SnailScript : MonoBehaviour {
 		// IF we don't detect collision any more do whats in {}
 		if (!Physics2D.Raycast (down_Collision.position, Vector2.down, 0.1f)) {
 
-			ChangeDirection ();
-			Debug.Log("chanfed");
+			//ChangeDirection ();
+			//Debug.Log("direction change");
 		}
 
 	}
+
 
 	void ChangeDirection() {
 
