@@ -27,4 +27,15 @@ public class ScoreScipt : MonoBehaviour
             audioManager.Play();
         }
     }
+
+
+    public int GetCoinCount() {
+        return scoreCount;
+    }
+
+    // متد عمومی برای تنظیم تعداد سکه‌ها
+    public void SetCoinCount(int count) {
+        scoreCount = count;
+        coinTextScore.text = "x" + scoreCount;
+    }
 }

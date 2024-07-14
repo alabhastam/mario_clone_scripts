@@ -10,6 +10,10 @@ public class PlayerDamage : MonoBehaviour
     private Text lifeText;
     private int lifeScoreCount;
     private bool canDamage; 
+
+
+    //life not score
+    private ScoreScipt scoreScript;
     
     void Start() {
         Time.timeScale = 1f;    
@@ -20,6 +24,8 @@ public class PlayerDamage : MonoBehaviour
         lifeText.text = "x" + lifeScoreCount;
 
         canDamage = true;
+        //life not score
+        scoreScript = GameObject.FindObjectOfType<ScoreScipt>();
     }
     
 
@@ -32,8 +38,15 @@ public class PlayerDamage : MonoBehaviour
 
             }
             if(lifeScoreCount == 0){
+                if (scoreScript != null && scoreScript.GetCoinCount() > 0) {
+                    // استفاده از سکه‌ها برای یک ضربه اضافی
+                    scoreScript.SetCoinCount(0);
+                    lifeScoreCount = 1;
+                    lifeText.text = "x" + lifeScoreCount;
+                }else{
                 Time.timeScale = 0f;
                 StartCoroutine(RestartGame());
+                }
             }
 
             canDamage = false;
@@ -42,6 +55,9 @@ public class PlayerDamage : MonoBehaviour
         }
         
     }
+
+
+
     IEnumerator WaitForDamage(){
         // time.timescale up in the page ws depend on this function then we cant use normal wait for sec
         yield return new WaitForSeconds(2f);
