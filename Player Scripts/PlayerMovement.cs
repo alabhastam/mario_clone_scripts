@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool jumped;
  
-    private float jumpPower = 10f;
+    private float jumpPower = 14f;
 
     public Transform groundCheckPosition; 
     public LayerMask groundLayer; 
