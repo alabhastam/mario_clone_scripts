@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-
     private Animator anim; 
-    private int health = 1;
+    private int health = 1; // You can adjust this for testing purposes
 
     private bool canDamage; 
 
@@ -21,25 +20,31 @@ public class BossHealth : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D target){
-        if(target.tag == Tags.BULLET_TAG){
+        Debug.Log("Collision Detected with: " + target.tag);
+        if(target.tag == "BULLET_TAG"){
+            Debug.Log("Hit by bullet");
             if(canDamage){
                 health--;
+                Debug.Log("Boss health: " + health);
                 canDamage = false;
 
-                    if(health == 0 ){
-                        GetComponent<BossScript>().DeactivateBossScript(); 
-                        anim.Play("BossDead");
+                if(health == 0 ){
+                    Debug.Log("Boss is dead");
+                    GetComponent<BossScript>().DeactivateBossScript(); 
+                    anim.Play("BossDead");
+                    // Optionally destroy the boss game object after the animation plays
+                    Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length); 
                 }
             }
             StartCoroutine(WaitForDamage());
         }
     }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
