@@ -20,8 +20,8 @@ public class BossHealth : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D target){
-        Debug.Log("Collision Detected with: " + target.tag);
-        if(target.tag == "BULLET_TAG"){
+       Debug.Log("Collision Detected with: " + target.tag);
+        if(target.tag == "Bullet"){
             Debug.Log("Hit by bullet");
             if(canDamage){
                 health--;
