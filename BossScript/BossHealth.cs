@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossHealth : MonoBehaviour
 {
     private Animator anim; 
-    private int health = 1; // You can adjust this for testing purposes
+    private int health = 2; // You can adjust this for testing purposes
 
     private bool canDamage; 
 
