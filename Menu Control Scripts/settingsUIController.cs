@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class VolumeSettings : MonoBehaviour
+public class SettingsUIController : MonoBehaviour
 {
     public Slider volumeSlider;
     public Button backButton;
@@ -31,6 +31,6 @@ public class VolumeSettings : MonoBehaviour
     void BackToMainMenu()
     {
         // Load the MainMenu scene
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 }
