@@ -6,9 +6,16 @@ public class SettingsUIController : MonoBehaviour
 {
     public Slider volumeSlider;
     public Button backButton;
+    public Toggle fullscreenToggle;
+    public Button applyButton;
 
     void Start()
     {
+        // Set the toggle to the current fullscreen state
+        fullscreenToggle.isOn = Screen.fullScreen;
+
+        // Add listener to the apply button
+        applyButton.onClick.AddListener(ApplySettings);
         // Load the saved volume level
         volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
         
@@ -32,5 +39,10 @@ public class SettingsUIController : MonoBehaviour
     {
         // Load the MainMenu scene
         SceneManager.LoadScene("Main Menu");
+    }
+    public void ApplySettings()
+    {
+        // Set the fullscreen mode based on the toggle state
+        Screen.fullScreen = fullscreenToggle.isOn;
     }
 }
