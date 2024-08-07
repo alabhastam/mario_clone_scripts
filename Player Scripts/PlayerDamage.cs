@@ -13,7 +13,7 @@ public class PlayerDamage : MonoBehaviour
 
 
     //life not score
-    private ScoreScipt scoreScript;
+    public ScoreScript scoreScript;
     
     void Start() {
         Time.timeScale = 1f;    
@@ -25,7 +25,7 @@ public class PlayerDamage : MonoBehaviour
 
         canDamage = true;
         //life not score
-        scoreScript = GameObject.FindObjectOfType<ScoreScipt>();
+        scoreScript = GameObject.FindObjectOfType<ScoreScript>();
     }
     
 
