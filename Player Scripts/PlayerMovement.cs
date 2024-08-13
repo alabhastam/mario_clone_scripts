@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool isPaused = false;
+
     public float speed = 5f;
     private Rigidbody2D myBody;
     private Animator anim;
@@ -21,6 +24,18 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
     void Update(){
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
         CheckIfGrounded();
         PlayerJump();
 
@@ -77,5 +92,18 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Jump", true);
             }
         }
+    }
+    void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f; // Pause the gameplay
+        SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive); // Load PauseMenu scene additively
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f; // Resume the gameplay
+        SceneManager.UnloadSceneAsync("PauseMenu"); // Unload the PauseMenu scene
     }
 }
