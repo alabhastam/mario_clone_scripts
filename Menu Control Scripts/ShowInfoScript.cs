@@ -1,22 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShowInfoScript : MonoBehaviour
 {
-    public GameObject infoPanel;  
+    public GameObject infoPanel;  // Reference to the panel with the text
 
     void Start()
     {
-        infoPanel.SetActive(false); 
+        infoPanel.SetActive(false); // Ensure the panel is hidden initially
     }
 
-    public void OnShowInfoButtonClick()
+    public void OnToggleInfoButtonClick()
     {
-        infoPanel.SetActive(true); 
-    }
-
-    public void OnCloseButtonClick()
-    {
-        infoPanel.SetActive(false); 
+        // Toggle the panel's active state
+        infoPanel.SetActive(!infoPanel.activeSelf);
     }
 }
