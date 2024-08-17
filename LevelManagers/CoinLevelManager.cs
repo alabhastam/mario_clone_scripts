@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public int coinsToCollect = 20; // Set the number of coins required to load the next level
+    // Set the number of coins required to load the next level
+    // Set the number of coins required to load the next level
+
+    public int coinsToCollect = 2; 
     private ScoreScript scoreScript;
 
     void Start()
@@ -25,6 +28,6 @@ public class LevelManager : MonoBehaviour
 
     void LoadNextLevel()
     {
-        SceneManager.LoadScene("Gameplay4"); // Replace with your next level scene name
+        SceneManager.LoadScene("MainMenu"); // Replace with your next level scene name
     }
 }
