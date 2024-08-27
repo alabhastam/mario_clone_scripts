@@ -12,7 +12,7 @@ public class PauseMenuScript : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f; // Ensure the game is unpaused
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void QuitGame()
