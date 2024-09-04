@@ -74,6 +74,7 @@ public class SnailScript : MonoBehaviour {
 		if (topHit != null) {
 			if (topHit.gameObject.tag == Tags.PLAYER_TAG) {
 				if (!stunned) {
+					// player has jump effect when jump at snail 
 					topHit.gameObject.GetComponent<Rigidbody2D> ().velocity =
 						new Vector2 (topHit.gameObject.GetComponent<Rigidbody2D>().velocity.x, 7f);
 
@@ -98,6 +99,7 @@ public class SnailScript : MonoBehaviour {
 					// APPLY DAMAGE TO PLAYER
 					leftHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamage();
 				} else {
+					//this should only happen for snail not beetle
 					if (tag != Tags.BETTLE_TAG) {
 						myBody.velocity = new Vector2 (15f, myBody.velocity.y);
 						StartCoroutine (Dead (3f));
@@ -112,6 +114,7 @@ public class SnailScript : MonoBehaviour {
 					// APPLY DAMAGE TO PLAYER
 					rightHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamage();
 				} else {
+					//this should only happen for snail not beetle
 					if (tag != Tags.BETTLE_TAG) {
 						myBody.velocity = new Vector2 (-15f, myBody.velocity.y);
 						StartCoroutine (Dead (3f));
@@ -129,7 +132,7 @@ public class SnailScript : MonoBehaviour {
 
 	}
 
-
+	//we dont use this func . we have Routine instead
 	void ChangeDirection() {
 
 		moveLeft = !moveLeft;
@@ -187,49 +190,4 @@ public class SnailScript : MonoBehaviour {
 	}
 
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

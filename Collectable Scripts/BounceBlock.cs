@@ -52,6 +52,7 @@ public class BounceBlock : MonoBehaviour
     {
         if (startAnim)
         {
+            //Moves the block
             transform.Translate(moveDirection * Time.deltaTime);
             if (transform.position.y >= animPosition.y)
             {

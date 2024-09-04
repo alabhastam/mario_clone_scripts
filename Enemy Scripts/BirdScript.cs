@@ -22,6 +22,7 @@ public class BirdScript : MonoBehaviour
 
     void Start()
     {
+        //we can change how much birds fly 
         originPosition = transform.position;
         originPosition.x += 6f;
 
@@ -38,6 +39,8 @@ public class BirdScript : MonoBehaviour
         DropTheEgg();
     }
 
+
+    //this function help actually change direction
     void MoveTheBird(){
         if(canMove){
             transform.Translate(moveDirection * speed *Time.smoothDeltaTime);
@@ -55,6 +58,8 @@ public class BirdScript : MonoBehaviour
 
         
     }
+
+    //this function help animation chage
     void ChangeDirection(float direction){
         Vector3 tempScale = transform.localScale;
         tempScale.x = direction ;
