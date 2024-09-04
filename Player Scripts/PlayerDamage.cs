@@ -35,7 +35,7 @@ public class PlayerDamage : MonoBehaviour
         {
             lifeScoreCount--;
 
-            // Update and save the player's life count
+            // Update and save the player's life count every level
             PlayerPrefs.SetInt("PlayerLives", lifeScoreCount);
             PlayerPrefs.Save();
 
