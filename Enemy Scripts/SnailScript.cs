@@ -66,8 +66,10 @@ public class SnailScript : MonoBehaviour {
 
 	void CheckCollision() {
 
-		RaycastHit2D leftHit = Physics2D.Raycast (left_Collision.position, Vector2.left, 0.1f, playerLayer);
-		RaycastHit2D rightHit = Physics2D.Raycast (right_Collision.position, Vector2.right, 0.1f, playerLayer);
+		RaycastHit2D leftHit = Physics2D.Raycast (left_Collision.position, Vector2.left, 0.5f, playerLayer);
+		RaycastHit2D rightHit = Physics2D.Raycast (right_Collision.position, Vector2.right, 0.5f, playerLayer);
+		Debug.DrawRay(left_Collision.position, Vector2.left * 0.5f, Color.red);
+		Debug.DrawRay(right_Collision.position, Vector2.right * 0.5f, Color.red);
 
 		Collider2D topHit = Physics2D.OverlapCircle (top_Collision.position, 0.2f, playerLayer);
 
@@ -134,27 +136,19 @@ public class SnailScript : MonoBehaviour {
 
 	//we dont use this func . we have Routine instead
 	void ChangeDirection() {
+    moveLeft = !moveLeft;
 
-		moveLeft = !moveLeft;
+    Vector3 tempScale = transform.localScale;
 
-		Vector3 tempScale = transform.localScale;
+    if (moveLeft) {
+        tempScale.x = Mathf.Abs(tempScale.x);  // تغییر جهت به سمت چپ
+    } else {
+        tempScale.x = -Mathf.Abs(tempScale.x);  // تغییر جهت به سمت راست
+    }
 
-		if (moveLeft) {
-			tempScale.x = Mathf.Abs (tempScale.x);
+    transform.localScale = tempScale;  // فقط مقیاس کلی تغییر می‌کند
+}
 
-			left_Collision.position = left_Collision_Pos;
-			right_Collision.position = right_Collision_Pos;
-
-		} else {
-			tempScale.x = -Mathf.Abs (tempScale.x);
-
-			left_Collision.position = right_Collision_Pos;
-			right_Collision.position = left_Collision_Pos;
-		}
-
-		transform.localScale = tempScale;
-
-	}
 
 	IEnumerator Dead(float timer) {
 		yield return new WaitForSeconds (timer);
