@@ -9,7 +9,7 @@ public class PlayerDamage : MonoBehaviour
     private Text lifeText;
     private int lifeScoreCount;
     private bool canDamage;
-
+    public AudioSource damageSound;
     public ScoreScript scoreScript;
 
     void Start()
@@ -38,6 +38,12 @@ public class PlayerDamage : MonoBehaviour
             // Update and save the player's life count every level
             PlayerPrefs.SetInt("PlayerLives", lifeScoreCount);
             PlayerPrefs.Save();
+
+            // Play damage sound
+            if (damageSound != null)
+            {
+                damageSound.Play(); // Play the sound when player takes damage
+            }
 
             if (lifeScoreCount >= 0)
             {
