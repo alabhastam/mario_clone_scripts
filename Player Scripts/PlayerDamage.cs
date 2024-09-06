@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerDamage : MonoBehaviour
 {
+    public static int defaultHealth = 10;
     private Text lifeText;
     private int lifeScoreCount;
     private bool canDamage;
@@ -22,7 +23,7 @@ public class PlayerDamage : MonoBehaviour
         lifeText = GameObject.Find("LifeText").GetComponent<Text>();
 
         // Load the player's life count from PlayerPrefs (default is 3 if not set)
-        lifeScoreCount = PlayerPrefs.GetInt("PlayerLives", 10);
+        lifeScoreCount = PlayerPrefs.GetInt("PlayerLives", defaultHealth);
         lifeText.text = "x" + lifeScoreCount;
 
         canDamage = true;

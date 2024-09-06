@@ -1,37 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class Flag : MonoBehaviour
 {
-    public string nextSceneName;
-    
-    
-    public AudioSource levelClearSound; 
-
-    private bool levelCompleted = false; // To avoid multiple triggers
+    public string nextSceneName; 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !levelCompleted)
+        if (other.CompareTag("Player")) 
         {
-            levelCompleted = true; 
-
-            // Play the level clear sound
-            if (levelClearSound != null)
-            {
-                levelClearSound.Play(); 
-            }
-
-            // Delay scene load to allow the sound to play
-            StartCoroutine(LoadNextSceneWithDelay(2f)); 
+            SceneManager.LoadScene(nextSceneName);
         }
-    }
-
-    
-    IEnumerator LoadNextSceneWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(nextSceneName); 
     }
 }

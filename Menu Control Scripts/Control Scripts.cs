@@ -9,6 +9,8 @@ public class ControlScripts : MonoBehaviour
     // Method to start the game by loading the Gameplay scene
     public void PlayGame()
     {
+        PlayerPrefs.SetInt("PlayerLives", PlayerDamage.defaultHealth);
+        PlayerPrefs.Save(); 
         SceneManager.LoadScene("Gameplay");
     }
 
