@@ -33,8 +33,8 @@ public class CameraFollow : MonoBehaviour
     {
         if (followsPlayer)
         {
-            Vector3 targetDelta = target.position - lastTargetPosition;
-            lastTargetPosition = target.position;
+            Vector3 targetDelta = target.position - lastTargetPosition;//not uesd in new version
+            lastTargetPosition = target.position;//some times if player not in camera initially thats help 
 
             Vector3 newCameraPosition = Vector3.SmoothDamp(transform.position, target.position + Vector3.forward * offsetZ, ref currentVelocity, cameraSpeed);
             transform.position = new Vector3(newCameraPosition.x, transform.position.y, newCameraPosition.z);
