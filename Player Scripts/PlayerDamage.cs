@@ -88,6 +88,6 @@ public class PlayerDamage : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2f);
         PlayerPrefs.DeleteKey("PlayerLives"); // Reset lives when restarting the game
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("Main Menu");
     }
 }
