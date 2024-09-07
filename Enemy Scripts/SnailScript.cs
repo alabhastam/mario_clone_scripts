@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnailScript : MonoBehaviour {
 
 	private Coroutine changeDirectionCoroutine;
-	public float moveSpeed = 1f;
+	public float moveSpeed = 1.5f;
 	private Rigidbody2D myBody;
 	private Animator anim;
 
@@ -16,6 +16,7 @@ public class SnailScript : MonoBehaviour {
 	private bool canMove;
 	private bool stunned;
 
+	
 	public Transform left_Collision, right_Collision, top_Collision, down_Collision;
 	private Vector3 left_Collision_Pos, right_Collision_Pos;
 
@@ -31,6 +32,8 @@ public class SnailScript : MonoBehaviour {
 		moveLeft = true;
 		canMove = true;
 		changeDirectionCoroutine = StartCoroutine(ChangeDirectionRoutine());
+
+		
 	}
 
 	//change enemy direction with random time
@@ -103,7 +106,8 @@ public class SnailScript : MonoBehaviour {
 				} else {
 					//this should only happen for snail not beetle
 					if (tag != Tags.BETTLE_TAG) {
-						myBody.velocity = new Vector2 (15f, myBody.velocity.y);
+						//myBody.velocity = new Vector2 (15f, myBody.velocity.y);
+						//used to be a way for pushing fast for snail 
 						StartCoroutine (Dead (3f));
 					}
 				}
@@ -118,7 +122,8 @@ public class SnailScript : MonoBehaviour {
 				} else {
 					//this should only happen for snail not beetle
 					if (tag != Tags.BETTLE_TAG) {
-						myBody.velocity = new Vector2 (-15f, myBody.velocity.y);
+						//myBody.velocity = new Vector2 (-15f, myBody.velocity.y);
+						//used to be a way for pushing fast for snail 
 						StartCoroutine (Dead (3f));
 					}
 				}

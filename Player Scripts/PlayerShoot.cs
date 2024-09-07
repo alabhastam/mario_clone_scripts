@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject fireBullet;
-    public float cooldownTime = 2.0f; // Time in seconds between shots
+    public float cooldownTime = 1.3f; // Time in seconds between shots
 
     private float nextFireTime = 0.0f; // Time when the player can shoot again
 
